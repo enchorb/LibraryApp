@@ -1,0 +1,32 @@
+<div class="dialog-wrapper">
+  <div class="dialog-title">Item Checkout</div>
+  <div class="dialog-content">
+    <form class="dialog-form" [formGroup]="checkoutForm" action="">
+      <mat-form-field class="dialog-material-form">
+        <input matInput class="dialog-input"placeholder="Name" required name="name" formControlName="name" (input)="onNameType()">
+        <mat-error *ngIf="checkoutForm.controls.name.hasError('required')">This field is <strong>required</strong>.</mat-error>
+        <mat-error *ngIf="checkoutForm.controls.name.hasError('pattern') && !checkoutForm.controls.name.hasError('required')">Only <strong>alphanumeric</strong> characters are allowed.</mat-error>
+      </mat-form-field>
+      <mat-form-field class="dialog-material-form" appearance="outline">
+        <mat-label>SKU</mat-label>
+        <input matInput class="dialog-input"placeholder="SKU" required name="sku" formControlName="sku" (keyup.enter)="onBorrow()">
+        <mat-error *ngIf="checkoutForm.controls.sku.hasError('required')">This field is <strong>required</strong>.</mat-error>
+        <mat-error *ngIf="checkoutForm.controls.sku.hasError('pattern') && !checkoutForm.controls.sku.hasError('required')">Only <strong>alphanumeric</strong> characters are allowed.</mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+<div class="dialog-actions">
+  <div matRipple class="close-btn dialog-button" (click)="onClose()"
+       (touchstart)="onHover([true, ['closeBtn']])" (touchend)="onHover([false, ['closeBtn']])"
+       [ngClass]="(uiService.hoverStatus.checkoutForm.buttons.close ? 'dialog-button-hover' : 'dialog-button-idle')"
+  >
+    Close
+  </div>
+  <div matRipple matRippleColor="rgba(255, 255, 255, 0.25)" class="borrow-btn dialog-button" (click)="onBorrow()"
+       (touchstart)="onHover([true, ['borrowBtn']])" (touchend)="onHover([false, ['borrowBtn']])"
+       [ngClass]="(!checkoutForm.valid ? 'dialog-button-disabled' : uiService.hoverStatus.checkoutForm.buttons.borrow ? 'dialog-button-hover' : 'dialog-button-idle')"
+  >
+    Borrow
+  </div>
+</div>

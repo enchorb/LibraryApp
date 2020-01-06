@@ -1,0 +1,75 @@
+/*CONTAINERS*/
+.dialog-wrapper{
+  width: 75vh; height: fit-content; font-family: BodyText, sans-serif; overflow: hidden;
+  display: flex; flex-direction: column; -webkit-flex-direction: column; -ms-flex-direction: column;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*ITEMS*/
+.dialog-title{
+  width: 100%; height: fit-content; text-align: center; align-content: center;
+  font-weight: bolder; font-size: 24px;
+}
+
+.dialog-content{ width: 100%; height: fit-content }
+
+.dialog-scroll-wrapper{ overflow-scrolling: touch; -webkit-overflow-scrolling: touch !important; height: 100vh; }
+
+.dialog-scroll-container{
+  margin-top: 5px; overflow-y: auto;
+  width: 100%; display: flex; flex-direction: column; -webkit-flex-direction: column; -ms-flex-direction: column;
+  align-content: center; text-align: center;
+}
+
+.borrower-container{
+  width: 97.5%; border: 2px #ececec solid;
+}
+
+.overdue-borrower{ background-color: #ff413c; }
+
+.even-borrower{ background-color: #ececec; }
+
+.borrower-name{ font-size: 20px; font-weight: bold; color: black; }
+
+.borrower-date{ font-size: 14px; font-weight: lighter; color: #505050; font-style: oblique;  }
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*MEDIA QUERIES*/
+@media only screen and (min-width: 1140px) and (max-width: 10000px){
+  .dialog-wrapper{ max-width: 350px; }
+  .dialog-scroll-container{ max-height: 450px; }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1139px){
+  .dialog-wrapper{ max-width: 325px; }
+  .dialog-scroll-container{ max-height: 425px; }
+}
+
+@media only screen and (min-width: 550px) and (max-width: 749px){
+  .dialog-wrapper{ max-width: 325px; }
+  .dialog-scroll-container{ max-height: 425px; }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 549px){
+  .dialog-wrapper{ max-width: 300px; }
+  .dialog-scroll-container{ max-height: 400px; }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 399px){
+  .dialog-wrapper{ max-width: 250px; }
+  .dialog-scroll-container{ max-height: 325px; }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 359px){
+  .dialog-wrapper{ max-width: 225px; }
+  .dialog-scroll-container{ max-height: 300px; }
+}
+
+@media only screen and (min-width: 225px) and (max-width: 299px){
+  .dialog-wrapper{ max-width: 225px; }
+  .dialog-scroll-container{ max-height: 300px; }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 224px){
+  .dialog-wrapper{ max-width: 225px; }
+  .dialog-scroll-container{ max-height: 300px; }
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/

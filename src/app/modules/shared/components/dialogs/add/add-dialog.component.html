@@ -1,0 +1,61 @@
+<div class="dialog-wrapper">
+  <div class="dialog-title">Add An Item</div>
+  <div class="dialog-content">
+    <form class="dialog-form" [formGroup]="addForm" action="">
+      <mat-form-field class="dialog-material-form">
+        <input matInput class="dialog-input"placeholder="Name" required name="name" formControlName="name">
+        <mat-hint style="color: #00aaef" *ngIf="addForm.controls.name.pending">Checking database for item: <strong>{{addForm.controls.name.value}}</strong>...</mat-hint>
+        <mat-hint style="color: red" *ngIf="addForm.controls.name.invalid && addForm.controls.name.dirty && !addForm.controls.name.hasError('required') && !addForm.controls.name.hasError('pattern')">
+          Item <strong>{{addForm.controls.name.value}}</strong> has already been added.
+        </mat-hint>
+        <mat-error *ngIf="addForm.controls.name.hasError('required')">This field is <strong>required</strong>.</mat-error>
+        <mat-error *ngIf="addForm.controls.name.hasError('pattern') && !addForm.controls.name.hasError('required')">Only <strong>alphanumeric</strong> characters are allowed.</mat-error>
+      </mat-form-field>
+      <mat-form-field  class="dialog-material-form">
+        <input matInput class="dialog-input" placeholder="SKU" required name="sku" formControlName="sku">
+        <mat-hint style="color: #00aaef" *ngIf="addForm.controls.sku.pending">Checking database for SKU: <strong>{{addForm.controls.sku.value}}</strong>...</mat-hint>
+        <mat-error style="color: red" *ngIf="addForm.controls.sku.invalid && addForm.controls.sku.dirty && !addForm.controls.sku.hasError('required') && !addForm.controls.sku.hasError('pattern')  && !addForm.controls.sku.hasError('minlength')  && !addForm.controls.sku.hasError('maxlength')">
+          SKU <strong>{{addForm.controls.sku.value}}</strong> has already been assigned.
+        </mat-error>
+        <mat-error *ngIf="addForm.controls.sku.hasError('required')">This field is <strong>required</strong>.</mat-error>
+        <mat-error *ngIf="addForm.controls.sku.hasError('minlength') && !addForm.controls.sku.hasError('required')">SKU must be a minimum of <strong>6</strong> characters.</mat-error>
+        <mat-error *ngIf="addForm.controls.sku.hasError('maxlength') && !addForm.controls.sku.hasError('required')">SKU may not be longer than <strong>12</strong> characters.</mat-error>
+        <mat-error *ngIf="addForm.controls.sku.hasError('pattern') && !addForm.controls.sku.hasError('required')">Only <strong>alphanumeric</strong> characters are allowed.</mat-error>
+      </mat-form-field>
+      <div class="type-select">
+        <mat-radio-group class="dialog-material-radio" formControlName="type" ><mat-radio-button [value]="'Book'"></mat-radio-button><mat-radio-button [value]="'AV'"></mat-radio-button></mat-radio-group>
+        <span class="align-tool"></span>
+        <div class="fab-button-container av-fab" (click)="onType('AV');" (touchstart)="onHover([true, ['avBtn']])" (touchend)="onHover([false, ['avBtn']])">
+          <span class="align-tool"></span>
+          <svg class="fab-icon av-fab-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+               [ngClass]="(uiService.hoverStatus.addForm.buttons.av ? 'av-fab-icon-hover' : 'av-fab-icon-idle')">
+            <path [attr.d]="uiService.svgIcons.av"/></svg>
+          <span class="align-tool"></span>
+        </div>
+        <span class="align-tool"></span>
+        <div class="fab-button-container book-fab" (click)="onType('Book');" (touchstart)="onHover([true, ['bookBtn']])" (touchend)="onHover([false, ['bookBtn']])">
+          <span class="align-tool"></span>
+          <svg class="fab-icon book-fab-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+               [ngClass]="(uiService.hoverStatus.addForm.buttons.book ? 'book-fab-icon-hover' : 'book-fab-icon-idle')">
+            <path [attr.d]="uiService.svgIcons.book"/></svg>
+          <span class="align-tool"></span>
+        </div>
+        <span class="align-tool"></span>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="dialog-actions">
+  <div matRipple class="close-btn dialog-button" (click)="onClose()"
+       (touchstart)="onHover([true, ['closeBtn']])" (touchend)="onHover([false, ['closeBtn']])"
+       [ngClass]="(uiService.hoverStatus.addForm.buttons.close ? 'dialog-button-hover' : 'dialog-button-idle')"
+  >
+    Close
+  </div>
+  <div matRipple matRippleColor="rgba(255, 255, 255, 0.25)" class="add-btn dialog-button" (click)="onAdd()"
+       (touchstart)="onHover([true, ['addBtn']])" (touchend)="onHover([false, ['addBtn']])"
+       [ngClass]="(!addForm.valid ? 'dialog-button-disabled' : uiService.hoverStatus.addForm.buttons.add ? 'dialog-button-hover' : 'dialog-button-idle')"
+  >
+    Add
+  </div>
+</div>

@@ -1,21 +1,17 @@
 /*IMPORTANT*/
 html{
-  overflow: hidden;
   padding:0!important;
-  margin:0 !important;
-  -webkit-overflow-scrolling: touch !important;
+  margin:0 !important; overflow: hidden;
 }
 
 body{
-  width: 100%; overflow: hidden;
-  padding:0!important;
-  margin:0 !important;
-  -webkit-overflow-scrolling: touch !important;
+  width: 100%;
+  padding:0!important; margin:0 !important; overflow: hidden;
 }
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 /*CONTAINERS*/
 .html-wrapper{
-  background: whitesmoke;
+  background: #e4e7ec;
 }
 
 .body-wrapper{
@@ -25,17 +21,55 @@ body{
   top: 0px; left: 0px; bottom: 0px; right: 0px;
 }
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
-/*ITEMS*/
-.app-txt{
-  color: white;
-  font-family: Avenir, sans-serif;
-  font-weight: bold;
-  font-size: 1em;
+/*FONTS*/
+@font-face {
+  font-family: BodyText;
+  src: url(assets/font/Avenir.otf) format("opentype");
 }
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 /*TOOLS*/
-.align-tool{
-  flex: 1 1 auto;
+.align-tool{ flex: 1 1 auto; }
+
+.notification-snackbar{
+  font-family: BodyText, sans-serif !important; color: white !important;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*LOADING*/
+.loader{
+  position: fixed; top: 0; left: 0;
+  height: 100%; width: 100%; z-index: 9999;
+  overflow: hidden; text-align: center;
+}
+
+.load-cube-grid{
+  position: relative;
+  width: 100px; height: 100px;
+  margin: 0 auto; top: calc(50% - 50px);
+}
+
+.load-cube-grid .ld-cube{
+  width: 33%; height: 33%;
+  padding: 5%; margin: -5%;
+  background-image: url("./assets/Loading/single-t-dark.png");
+  background-size: 80%; background-position: center center; background-repeat: no-repeat; float: left;
+  animation: ld-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+
+.load-cube-grid .ld-cube1{ animation-delay: .25s; }
+.load-cube-grid .ld-cube2{ animation-delay: .35s; }
+.load-cube-grid .ld-cube3{ animation-delay: .35s; }
+.load-cube-grid .ld-cube4{ animation-delay: .1s; }
+.load-cube-grid .ld-cube5{  background-image: url("./assets/Loading/single-t-blue.png"); animation-delay: .2s; }
+.load-cube-grid .ld-cube6{ animation-delay: .35s; }
+.load-cube-grid .ld-cube7{ animation-delay: .1s; }
+.load-cube-grid .ld-cube8{ animation-delay: .1s; }
+.load-cube-grid .ld-cube9{ animation-delay: .25s; }
+
+@keyframes ld-cubeGridScaleDelay {
+  0% { transform: scale3D(1,1,1); }
+  35% { transform: scale3D(0,0,1); }
+  70% { transform: scale3D(1,1,1); }
+  100% { transform: scale3D(1,1,1); }
 }
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 /*MEDIA QUERY*/

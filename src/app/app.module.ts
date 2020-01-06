@@ -1,9 +1,10 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import 'hammerjs';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 // Modules
 import {SharedModule} from './modules/shared/shared.module';
@@ -11,17 +12,17 @@ import {SharedModule} from './modules/shared/shared.module';
 // Components
 import { AppComponent } from './app.component';
 
-// Services
-
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'library-app'),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

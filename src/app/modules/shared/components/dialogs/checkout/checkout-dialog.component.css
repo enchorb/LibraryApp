@@ -1,0 +1,98 @@
+/*CONTAINERS*/
+.dialog-wrapper{
+  width: 75vh; height: fit-content; font-family: BodyText, sans-serif; overflow: hidden;
+  display: flex; flex-direction: column; -webkit-flex-direction: column; -ms-flex-direction: column;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*ITEMS*/
+.dialog-title{
+  width: 100%; height: fit-content; text-align: center; align-content: center;
+  font-weight: bolder; font-size: 24px;
+}
+
+.dialog-content{ width: 100%; height: fit-content; }
+
+.dialog-form{ width: 100%; height: fit-content; display: flex; flex-direction: column; -webkit-flex-direction: column; -ms-flex-direction: column; }
+
+.dialog-material-form{ width: 100%; margin-top: 2%; }
+
+.dialog-input{ width: 100%; height: 100%; }
+
+.dialog-actions{
+  width: 100%; height: fit-content; margin-top: calc(15% - 40px);
+  position: relative; bottom: 0; left: 0;
+  display: flex; flex-direction: row; -webkit-flex-direction: row; -ms-flex-direction: row;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*BUTTON*/
+.close-btn{ color: black; background-color: #f6f6f6; }
+.borrow-btn{ color: white; background-color: #00aaef; }
+.dialog-button{
+  font-family: BodyText, sans-serif; font-weight: normal; font-size: 18px;
+  cursor: pointer; text-decoration: none; padding: 8px 21px;
+  display: flex; flex-direction: row; -webkit-flex-direction: row; -ms-flex-direction: row;
+  text-align: center; align-content: center; align-items: center;  vertical-align: middle;
+  white-space: nowrap; -ms-touch-action: manipulation; touch-action: manipulation; outline:0;
+  border:0; border-radius: 4px; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+  transition: all 0.25s ease-in-out; -webkit-transition: all 0.25s ease-in-out; -moz-transition: all 0.25s ease-in-out; -o-transition: all 0.25s ease-in-out;
+}
+.dialog-button:first-child{ margin-right: 15px; }
+.dialog-button-idle{
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); -o-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+.dialog-button-hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); -moz-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); -o-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.dialog-button-disabled{
+  pointer-events: none;
+  opacity: 0.65; -moz-opacity: 0.65; filter: alpha(opacity=0.65); -webkit-filter: opacity(65%); -ms-filter: alpha(opacity=65);
+  transition: all 0s ease-in-out; -webkit-transition: all 0s ease-in-out; -moz-transition: all 0s ease-in-out; -o-transition: all 0s ease-in-out;
+  box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0); -webkit-box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0); -moz-box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0); -o-box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0);
+}
+@media (hover: hover) {
+  .dialog-button{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); -o-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  }
+  .dialog-button:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); -moz-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); -o-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+  .dialog-button-disabled:hover{
+    pointer-events: none;
+    opacity: 0.65; -moz-opacity: 0.65; filter: alpha(opacity=0.65); -webkit-filter: opacity(65%); -ms-filter: alpha(opacity=65);
+    box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0); -webkit-box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0); -moz-box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0); -o-box-shadow: 0 0 0 rgba(0,0,0,0), 0 0 0 rgba(0,0,0,0);
+  }
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*MEDIA QUERIES*/
+@media only screen and (min-width: 1140px) and (max-width: 10000px){
+  .dialog-wrapper{ max-width: 350px; max-height: 450px; }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1139px){
+  .dialog-wrapper{ max-width: 325px; max-height: 425px; }
+}
+
+@media only screen and (min-width: 550px) and (max-width: 749px){
+  .dialog-wrapper{ max-width: 325px; max-height: 425px; }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 549px){
+  .dialog-wrapper{ max-width: 300px; max-height: 400px; }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 399px){
+  .dialog-wrapper{ max-width: 250px; max-height: 325px; }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 359px){
+  .dialog-wrapper{ max-width: 225px; max-height: 300px; }
+}
+
+@media only screen and (min-width: 225px) and (max-width: 299px){
+  .dialog-wrapper{ max-width: 225px; max-height: 300px; }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 224px){
+  .dialog-wrapper{ max-width: 225px; max-height: 300px; }
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/

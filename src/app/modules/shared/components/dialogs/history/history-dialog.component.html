@@ -1,0 +1,14 @@
+<div class="dialog-wrapper">
+  <div class="dialog-title">Borrow History</div>
+  <div class="dialog-content">
+    <div class="dialog-scroll-container">
+      <div class="borrower-container" *ngFor="let borrower of item.borrowed; let i = index; let even = even"
+           [ngClass]="even ? ((appDataService.day > borrower.due) && (borrower.return == null)) ? 'overdue-borrower' : 'even-borrower' : ((appDataService.day > borrower.due) && (borrower.return == null)) ? 'overdue-borrower' : 'borrower-container'">
+        <div class="borrower-name">{{borrower.user}}</div>
+        <div class="borrower-date"><strong>Borrowed:</strong> {{borrower.checkout | date: 'MMMM d yyyy'}}</div>
+        <div class="borrower-date"><strong>Due Date:</strong> {{borrower.due | date: 'MMMM d yyyy'}}</div>
+        <div class="borrower-date" *ngIf="borrower.return"><strong>Returned On:</strong> {{borrower.return | date: 'MMMM d yyyy'}}</div>
+      </div>
+    </div>
+  </div>
+</div>

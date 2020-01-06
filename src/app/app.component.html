@@ -1,4 +1,132 @@
 <div class="app-wrapper">
-  <button mat-raised-button color="primary">Click Me!</button>
-</div>
+  <span class="align-tool"></span>
 
+  <div class="app-container">
+    <div class="app-header">
+      <span class="align-tool"></span>
+
+      <div class="fab-button-container"
+           (mouseenter)="itemTooltip.hide(0); stockTooltip.hide(0); cartTooltip.hide(0);"
+           (touchstart)="onHover([true, ['add']]);  addTooltip.hide(0); addTooltip.show(0); itemTooltip.hide(0); stockTooltip.hide(0); cartTooltip.hide(0);"
+           (touchend)="onHover([false, ['add']])"
+           [ngClass]="(uiService.hoverStatus.fabIcons.add ? 'fab-button-container-hover' : 'fab-button-container-idle')"
+           (click)="onAdd(); addTooltip.hide(0);"
+           #addTooltip="matTooltip" matTooltip="Add Item(s)" [matTooltipClass]="{'tooltip': true}" [matTooltipPosition]="'left'" [matTooltipHideDelay]="500">
+        <span class="align-tool"></span>
+        <svg class="fab-icon add-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+             [ngClass]="(uiService.hoverStatus.fabIcons.add ? 'fab-icon-hover' : 'fab-icon-idle')">
+          <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
+        <span class="align-tool"></span>
+      </div>
+
+      <span class="align-tool"></span>
+
+      <div class="search-bar-container">
+        <form [formGroup]="searchForm" action="">
+          <input class="search-input" [ngStyle]="{'padding': !(searchForm.controls.search.value == null) ? '15px 90px 15px 30px' : '15px 90px 15px 15px'}"
+                 placeholder="Search..." name="search" formControlName="search"
+                 (touchstart)="onHover([true, ['searchBar']])" (touchend)="onHover([false, ['searchBar']])"
+                 [ngClass]="(uiService.hoverStatus.searchBar ? 'search-input-hover' : 'search-input-idle')"
+          >
+        </form>
+
+        <div class="left-icon-container" (click)="onCross()" [ngClass]="{'left-icon-container-disabled': (searchForm.controls.search.value == null)}">
+          <div class="icon-container" (touchstart)="onHover([true, ['cross']])" (touchend)="onHover([false, ['cross']])">
+            <span class="align-tool"></span>
+            <svg class="cross-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                 [ngClass]="(uiService.hoverStatus.searchBarIcons.cross ? 'cross-icon-hover' : 'cross-icon-idle')">
+              <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+            <span class="align-tool"></span>
+          </div>
+        </div>
+        <div class="right-icon-container" (click)="onStock(); stockTooltip.hide(0); stockTooltip.show(0);"
+             (touchstart)="stockTooltip.hide(0); stockTooltip.show(0); itemTooltip.hide(0); addTooltip.hide(0); cartTooltip.hide(0);"
+             (mouseenter)="itemTooltip.hide(0); addTooltip.hide(0); cartTooltip.hide(0);"
+             #stockTooltip="matTooltip" [matTooltip]="uiService.searchBar.stock.tooltip" [matTooltipClass]="{'tooltip': true}" [matTooltipPosition]="'below'" [matTooltipHideDelay]="500">
+          <div class="icon-container" (touchstart)="onHover([true, ['stock']])" (touchend)="onHover([false, ['stock']])">
+            <span class="align-tool"></span>
+            <svg class="stock-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                 [ngClass]="(uiService.hoverStatus.searchBarIcons.stock ? 'stock-icon-hover' : 'stock-icon-idle')">
+              <path [attr.d]="uiService.searchBar.stock.svg"/></svg>
+            <span class="align-tool"></span>
+          </div>
+        </div>
+        <div class="right-icon-container" (click)="onType(); itemTooltip.hide(0); itemTooltip.show(0);"
+             (touchstart)="itemTooltip.hide(0); itemTooltip.show(0); stockTooltip.hide(0); addTooltip.hide(0); cartTooltip.hide(0);"
+             (mouseenter)="stockTooltip.hide(0); addTooltip.hide(0); cartTooltip.hide(0);"
+             #itemTooltip="matTooltip" [matTooltip]="uiService.searchBar.type.tooltip" [matTooltipClass]="{'tooltip': true}" [matTooltipPosition]="'below'" [matTooltipHideDelay]="500"
+        >
+          <div class="icon-container" (touchstart)="onHover([true, ['type']])" (touchend)="onHover([false, ['type']])">
+            <span class="align-tool"></span>
+            <svg class="type-icon" width="24" height="24" viewBox="0 0 24 24"
+                 [ngClass]="(uiService.hoverStatus.searchBarIcons.type ? 'type-icon-hover' : 'type-icon-idle')">
+              <path [attr.d]="uiService.searchBar.type.svg"/></svg>
+            <span class="align-tool"></span>
+          </div>
+        </div>
+      </div>
+
+      <span class="align-tool"></span>
+
+      <div class="fab-button-container" (click)="onCart(); cartTooltip.hide(0);"
+           (mouseenter)="itemTooltip.hide(0); stockTooltip.hide(0); addTooltip.hide(0);"
+           (touchstart)="onHover([true, ['cart']]); cartTooltip.hide(0); cartTooltip.show(0); itemTooltip.hide(0); stockTooltip.hide(0); addTooltip.hide(0);"
+           (touchend)="onHover([false, ['cart']])"
+           [ngClass]="(uiService.hoverStatus.fabIcons.cart ? 'fab-button-container-hover' : 'fab-button-container-idle')"
+           #cartTooltip="matTooltip" matTooltip="Checkout Item(s)" [matTooltipClass]="{'tooltip': true}" [matTooltipPosition]="'right'" [matTooltipHideDelay]="500">
+        <span class="align-tool"></span>
+        <svg class="fab-icon cart-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+             [ngClass]="(uiService.hoverStatus.fabIcons.cart ? 'fab-icon-hover' : 'fab-icon-idle')">
+          <path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/></svg>
+        <span class="align-tool"></span>
+      </div>
+
+      <span class="align-tool"></span>
+    </div>
+
+    <div class="app-body">
+      <cdk-virtual-scroll-viewport class="scroll-wrapper" itemSize="1" maxBufferPx="175">
+        <div class="scroll-container">
+          <div class="info-card" *cdkVirtualFor="let item of (appDataService.items) | searchName: appDataService.searchFilter.name | searchType: appDataService.searchFilter.type | searchStock: appDataService.searchFilter.stock; let i = index;"
+               (touchstart)="onHover([true, ['itemCards', i]])" (touchend)="onHover([false, ['itemCards', i]])"
+               [ngClass]="(((i == i) && uiService.hoverStatus.cards.item[i]?.card) ? 'info-card-hover' : 'info-card-idle')"
+          >
+            <ng-template #loadingItem><div class="info-loading-container"><div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></ng-template>
+            <div class="info-card-container" *ngIf="item?.id; else loadingItem">
+              <div class="info-card-status-row">
+                <div class="info-card-icon" (click)="onDelete(item, i)">
+                  <span class="align-tool"></span>
+                  <svg width="24" height="24" viewBox="0 0 24 24"><path fill="#00aaef" [attr.d]="(item.type == 'Book') ? uiService.svgIcons.book : uiService.svgIcons.av"/></svg>
+                  <span class="align-tool"></span>
+                </div>
+                <span class="align-tool"></span>
+                <div class="info-card-icon" (click)="onUpdate(item, i)">
+                  <span class="align-tool"></span>
+                  <svg width="24" height="24" viewBox="0 0 24 24"><path [attr.fill]="(item.stock == 'In') ? '#37ff2f' : (item.stock == 'Out') ? '#ff752d' : '#ff171a'" [attr.d]="uiService.svgIcons.btnChecked"/></svg>
+                  <span class="align-tool"></span>
+                </div>
+              </div>
+              <span class="align-tool"></span>
+              <div class="info-card-desc-row">
+                <div class="info-card-title">{{item.name}}</div>
+                <div class="info-card-subtitle">{{item.sku}}</div>
+              </div>
+              <span class="align-tool"></span>
+              <div class="info-card-history-row">
+                <span class="align-tool"></span>
+                <div class="outline-btn" (click)="onHistory(item, i)" (touchstart)="onHover([true, ['itemCardsBorrowed', i]])" (touchend)="onHover([false, ['itemCardsBorrowed', i]])"
+                     [ngClass]="(item.borrowed.length == 0) ? 'outline-btn-disabled' : ((i == i) && uiService.hoverStatus.cards.item[i]?.borrowed) ? 'outline-btn-hover' : 'outline-btn-idle'"
+                >
+                  <div class="outline-btn-text">HISTORY&nbsp;</div>
+                  <svg class="outline-btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 12c0 6.627-5.373 12-12 12s-12-5.373-12-12h2c0 5.514 4.486 10 10 10s10-4.486 10-10-4.486-10-10-10c-2.777 0-5.287 1.141-7.099 2.977l2.061 2.061-6.962 1.354 1.305-7.013 2.179 2.18c2.172-2.196 5.182-3.559 8.516-3.559 6.627 0 12 5.373 12 12zm-13-6v8h7v-2h-5v-6h-2z"/></svg>
+                </div>
+                <span class="align-tool"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </div>
+  <span class="align-tool"></span>
+</div>
