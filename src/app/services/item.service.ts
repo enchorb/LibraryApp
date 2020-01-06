@@ -85,8 +85,8 @@ export class ItemService {
 /*
 this.itemService.addItem(
   {
-    name: 'Book One',
-    nameSearch: 'book one',
+    name: 'Percy Jackson',
+    nameSearch: 'percy jackson and the olympians',
     type: 'Book',
     stock: 'In',
     sku: 'abc123',
@@ -96,8 +96,8 @@ this.itemService.addItem(
 
 this.itemService.addItem(
   {
-    name: 'AV One',
-    nameSearch: 'av one',
+    name: 'Speaker System',
+    nameSearch: 'speaker system',
     type: 'AV',
     stock: 'Out',
     sku: 'def456',
@@ -114,8 +114,8 @@ this.itemService.addItem(
 
 this.itemService.addItem(
   {
-    name: 'Book Two',
-    nameSearch: 'book two',
+    name: '1984',
+    nameSearch: '1984',
     type: 'Book',
     stock: 'Over',
     sku: 'ghi789',
@@ -138,8 +138,8 @@ this.itemService.addItem(
 
 this.itemService.addItem(
   {
-    name: 'Book Three',
-    nameSearch: 'book three',
+    name: 'Enlightenment Now',
+    nameSearch: 'enlightenment now',
     type: 'Book',
     stock: 'In',
     sku: 'jkl123',
@@ -168,8 +168,8 @@ this.itemService.addItem(
 
 this.itemService.addItem(
   {
-    name: 'AV Two',
-    nameSearch: 'av two',
+    name: 'Projector',
+    nameSearch: 'projector',
     type: 'AV',
     stock: 'In',
     sku: 'mno456',
@@ -179,8 +179,8 @@ this.itemService.addItem(
 
 this.itemService.addItem(
   {
-    name: 'AV Three',
-    nameSearch: 'av three',
+    name: 'Amplifier',
+    nameSearch: 'amplifier',
     type: 'AV',
     stock: 'In',
     sku: 'pqr789',
@@ -197,8 +197,8 @@ this.itemService.addItem(
 
 this.itemService.addItem(
   {
-    name: 'Book Four',
-    nameSearch: 'book four',
+    name: 'The Great Gatsby',
+    nameSearch: 'the great gatsby',
     type: 'Book',
     stock: 'Out',
     sku: 'stu123',
@@ -215,8 +215,8 @@ this.itemService.addItem(
 
 this.itemService.addItem(
   {
-    name: 'AV Four',
-    nameSearch: 'av four',
+    name: 'Television',
+    nameSearch: 'television',
     type: 'AV',
     stock: 'Out',
     sku: 'vwx456',
